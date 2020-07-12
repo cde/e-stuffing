@@ -3,7 +3,6 @@ import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { auth } from '../../firebase/firebase.util';
 import CartIcon from "../CartIcon/CartIcon";
-import CustomButton from "../CustomButton/CustomButton";
 
 import  { ReactComponent as Logo } from "../../assets/crown.svg";
 

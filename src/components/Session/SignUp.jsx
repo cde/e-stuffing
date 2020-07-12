@@ -73,7 +73,7 @@ class SignUp extends Component {
                         name='password'
                         type='password'
                         handleChange={this.handleChange}
-                        value={this.state.password}
+                        value={ password }
                         label='Password'
                         required
                     />
@@ -82,7 +82,7 @@ class SignUp extends Component {
                         name='passwordConfirmation'
                         type='password'
                         handleChange={this.handleChange}
-                        value={this.state.passwordConfirmation}
+                        value={ passwordConfirmation}
                         label='Confirm Password'
                         required
                     />

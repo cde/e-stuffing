@@ -6,13 +6,10 @@ import categorySections from './category_data_demo'
 class Category extends Component {
     constructor(){
         super();
-
         this.state = {
             sections: categorySections
         }
     }
-
-
     render() {
         return( <div className='category-menu'>
             {
