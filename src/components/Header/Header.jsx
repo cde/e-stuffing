@@ -3,12 +3,14 @@ import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { auth } from '../../firebase/firebase.util';
 import CartIcon from "../CartIcon/CartIcon";
+import CustomButton from "../CustomButton/CustomButton";
 
 import  { ReactComponent as Logo } from "../../assets/crown.svg";
 
 import './Header.scss'
+import CartDropDown from "../CartDropDown/CartDropDown";
 
-const Header = ( {currentUser}) => (
+const Header = ( { currentUser, hidden }) => (
     <div className='header'>
         <h1>E-Stuffing</h1>
 
@@ -25,10 +27,13 @@ const Header = ( {currentUser}) => (
             }
             <CartIcon />
         </div>
+        { !hidden && <CartDropDown />}
     </div>
 );
 
 const mapStateToProps = (state) => ({
-    currentUser: state.user.currentUser
+    currentUser: state.user.currentUser,
+    hidden: state.cart.hidden
+
 })
 export default connect(mapStateToProps)(Header);
