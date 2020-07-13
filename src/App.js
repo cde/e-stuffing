@@ -5,10 +5,14 @@ import './App.css';
 
 import HomePage from "./pages/HomePage/HomePage";
 import ShopPage from "./pages/ShopPage/ShopPage";
-import Header  from "./components/Header/Header";
 import SessionPage  from "./pages/SessionPage/SessionPage";
+import CheckoutPage from "./pages/CheckoutPage/CheckoutPage";
+
+import Header  from "./components/Header/Header";
+
 import {auth, createUserProfileDocument} from './firebase/firebase.util';
 import { setCurrentUser } from "./redux/user/user.actions";
+import { selectCurrentUser } from "./redux/user/user.selectors";
 
 class App extends Component {
     unsubscribeFromAuth = null;
@@ -24,10 +28,8 @@ class App extends Component {
                        id: snapShot.id,
                        ...snapShot.data()
                     });
-                    console.log(this.state)
                 });
             }
-
             this.setState({ currentUser: userAuth });
         });
     }
@@ -43,6 +45,7 @@ class App extends Component {
                 <Switch>
                     <Route exact path='/' component= {HomePage} />
                     <Route  path='/shop' component={ShopPage} />
+                    <Route  exact path='/checkout' component={CheckoutPage} />
                     <Route
                         exact path='/signin'
                         render={ () => this.props.currentUser ? (<Redirect to='/' /> ): (<SessionPage />) }
@@ -54,8 +57,8 @@ class App extends Component {
 
 }
 
-const mapStateToProps = ( { user }) => ({
-    currentUser: user.currentUser
+const mapStateToProps = (state) => ({
+    currentUser: selectCurrentUser(state)
 })
 
 const mapDispatchProps = dispatch => ({
