@@ -1,9 +1,9 @@
-import shopData from './shop_data_demo'
-const initialState = {
-    collections: shopData
+import SHOP_DATA from './shop.data'
+const INITIAL_STATE = {
+    collections: SHOP_DATA
 }
 
-const ShopReducer = (state = initialState ,action) => {
+const ShopReducer = (state = INITIAL_STATE, action) => {
     switch (action.type) {
         default:
             return state;
